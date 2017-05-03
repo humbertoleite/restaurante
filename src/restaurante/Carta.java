@@ -77,20 +77,34 @@ public class Carta {
          cartaPlato.tiempoSalida = scanner.nextInt();
          scanner.nextLine();
          
-         this.listaCarta.add(cartaPlato);
+         this.getListaCarta().add(cartaPlato);
          System.out.println("¿Quieres salir?");
          if (scanner.nextLine().equals("salir")){
              entrada = false;
          }
      }
      
-     return this.listaCarta;
+     return this.getListaCarta();
      
     }
     
     public void imprimir (){
-        for (Carta carta: listaCarta){ 
+        for (Carta carta: getListaCarta()){ 
             System.out.println(carta.nombre+","+carta.precio+","+carta.tiempoSalida);
         }
+    }
+
+    /**
+     * @return the listaCarta
+     */
+    public List<Carta> getListaCarta() {
+        return listaCarta;
+    }
+
+    /**
+     * @param listaCarta the listaCarta to set
+     */
+    public void setListaCarta(List<Carta> listaCarta) {
+        this.listaCarta = listaCarta;
     }
 }

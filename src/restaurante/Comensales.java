@@ -5,7 +5,10 @@
  */
 package restaurante;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Scanner;
 
 /**
  *
@@ -16,7 +19,8 @@ public class Comensales {
     private int cantidad;
     private Date reserva;
     private Camarero camarero;
-
+    private List<Carta> cartaLista = new ArrayList<Carta>();
+    List<Comensales> comensalesLista = new ArrayList<Comensales>();
     /**
      * @return the nombre
      */
@@ -72,4 +76,55 @@ public class Comensales {
     public void setCamarero(Camarero camarero) {
         this.camarero = camarero;
     }
+    
+    public List<Comensales> anadir (List<Camarero> camarero){
+        Scanner scanner = new Scanner(System.in);
+        boolean entrada = true;
+
+        while (entrada){
+            System.out.println("¿ Cual es el nombre?");
+            Comensales comensales = new Comensales();
+            comensales.setNombre(scanner.nextLine());
+
+            System.out.println("¿ Reserva para cuantas personas ?");
+            comensales.setCantidad(scanner.nextInt());
+            scanner.nextLine();
+
+            System.out.println("¿ Reserva para cual día ?");
+            comensales.setReserva(UtilRestaurante.FormatoFecha(scanner.nextLine()));
+
+            System.out.println("¿ Cual es su camarero ?");        
+            comensales.setCamarero(camarero.get(scanner.nextInt()));
+            scanner.nextLine();
+
+            comensalesLista.add(comensales);
+            System.out.println("¿ Desea salir ?");    
+            if (scanner.nextLine().toLowerCase().equals("salir")){
+                entrada = false;
+
+            }
+
+        }
+     return comensalesLista;
+        
+    }
+    
+    
+    public void imprimir(){
+        for(Comensales comensales: comensalesLista){
+            System.out.println(comensales.getNombre()+"("+comensales.getCantidad()+")"+comensales.getReserva());
+        }
+    }
+    
+    public void anadirComida(Carta carta){
+        cartaLista.add(carta);
+    }
+    
+    public void imprimirCuenta(){
+        
+        for(Carta carta: cartaLista){
+            System.out.println(carta.getNombre()+ " "+carta.getPrecio());
+        }
+    }
+    
 }

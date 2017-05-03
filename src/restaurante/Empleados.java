@@ -5,7 +5,10 @@
  */
 package restaurante;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Scanner;
 
 /**
  *
@@ -15,7 +18,7 @@ public class Empleados {
   private String nombre;
   private RangoEnum rango;  
   private Date fechaInicio;
-
+  
     /**
      * @return the nombre
      */
@@ -57,4 +60,7 @@ public class Empleados {
     public void setFechaInicio(Date fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
+    
+    
+   
 }

@@ -18,7 +18,7 @@ public class Cocinero extends Empleados {
     List<Cocinero> cocineroLista = new ArrayList<Cocinero>();
 
    public void Cocinero(){
-   setRango(RangoEnum.CAMARERO);
+    this.setRango(RangoEnum.CAMARERO);
    }
 
     /**
@@ -35,6 +35,7 @@ public class Cocinero extends Empleados {
         this.platos = platos;
     }
     
+  
     public List <Cocinero> anadir (){
         boolean entrada = true;
         Scanner scanner = new Scanner(System.in);
@@ -44,7 +45,7 @@ public class Cocinero extends Empleados {
         
         while (entrada){
             Cocinero cocinero = new Cocinero();
-            
+            cocinero.setRango(RangoEnum.COCINERO);
             System.out.println("¿Cómo se llama el cocinero?");  
             cocinero.setNombre(scanner.nextLine());
             
@@ -64,7 +65,7 @@ public class Cocinero extends Empleados {
     }
     public void imprimir (){
         for (Cocinero cocinero: cocineroLista){
-            System.out.println(cocinero.getNombre()+","+cocinero.getPlatos()+","+cocinero.getFechaInicio()+","+cocinero.getRango());
+            System.out.println(cocinero.getNombre()+","+cocinero.getPlatos()+","+cocinero.getFechaInicio()+","+cocinero.getRango().toString());
         }            
     }
 }
